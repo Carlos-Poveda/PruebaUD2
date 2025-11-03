@@ -4,13 +4,16 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Principal extends javax.swing.JFrame {
     private JTable tablaUsuarios;
     private JPanel panelPrincipal;
     private JButton btnAgregar;
+    private JButton btnSalir;
+    private JLabel lblTitulo;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
 
 
@@ -30,7 +33,13 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("Plataforma");
         tablaUsuarios.setModel(modelo);
         usuarios = new ArrayList<>();
-        usuarios.add(new Usuario("admin","admin","admin"));
+        usuarios.add(new Usuario("user1@example.com","España","Linux"));
+        usuarios.add(new Usuario("user2@example.com","España","Linux"));
+        usuarios.add(new Usuario("user3@example.com","España","Linux"));
+        usuarios.add(new Usuario("user4@example.com","España","Linux"));
+        usuarios.add(new Usuario("user5@example.com","España","Linux"));
+        usuarios.add(new Usuario("user6@example.com","España","Linux"));
+
         loadDataTable();
 
         btnAgregar.addActionListener(new ActionListener() {
@@ -54,6 +63,20 @@ public class Principal extends javax.swing.JFrame {
         });
 
 
+        btnSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+
+        lblTitulo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
 
